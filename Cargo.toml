@@ -1,0 +1,8 @@
+[workspace]
+members = [ "fmf", "fmfcc" ]
+
+[profile.release]
+opt-level = 's'
+lto = true
+strip = true
+panic = "abort"
