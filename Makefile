@@ -2,12 +2,12 @@ fmfcc := target/release/fmfcc
 fmfcc_deps := $(wildcard fmf/Cargo.toml fmf/src/* fmf/src/*/* fmfcc/Cargo.toml fmfcc/src/* fmfcc/src/*/* Cargo.toml)
 fmfflags := ${FMFFLAGS} --template out/template.html
 
-sources := $(wildcard src/*.fmf src/*/*.fmf)
+sources := $(wildcard src/*.fmf src/*/*.fmf) src/posts.fmf
 files := $(patsubst src/%.fmf,out/%.html,${sources})
 
 .PHONY: all static serve
 all: dev clean-template
-dev: out/template.html ${files} out/posts.html static 
+dev: out/template.html ${files} static
 
 ${fmfcc}: ${fmfcc_deps}
 	@printf "\e[1;32m%12s\e[0m %s\n" "build" "fmfcc (cargo)"
