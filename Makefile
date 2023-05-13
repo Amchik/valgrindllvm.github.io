@@ -7,7 +7,7 @@ files := $(patsubst src/%.fmf,out/%.html,${sources})
 
 .PHONY: all static serve
 all: dev clean-template
-dev: out/template.html ${files} src/posts.fmf static 
+dev: out/template.html ${files} out/posts.html static 
 
 ${fmfcc}: ${fmfcc_deps}
 	@printf "\e[1;32m%12s\e[0m %s\n" "build" "fmfcc (cargo)"
@@ -36,6 +36,7 @@ clean-template:
 	@printf "\e[1;34m%12s\e[0m %s\n" "clean" "out/template.html"
 	@rm out/template.html
 clean:
-	@printf "\e[1;34m%12s\e[0m %s\n" "clean" "out/"
+	@printf "\e[1;34m%12s\e[0m %s\n" "clean" "out/ src/posts.fmf"
 	@rm -rf out/
+	@rm -f src/posts.fmf
 
