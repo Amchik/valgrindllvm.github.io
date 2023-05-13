@@ -13,6 +13,11 @@ ${fmfcc}: ${fmfcc_deps}
 	@printf "\e[1;32m%12s\e[0m %s\n" "build" "fmfcc (cargo)"
 	@cargo b -r
 
+out/posts.html: ${fmfcc} out/template.html
+	@printf "\e[1;32m%12s\e[0m %s\n" "generate" "$(patsubst out/%.html,%.fmf,$@)"
+	@mkdir -p out/
+	@${fmfcc} cc -o $@ $(patsubst out/%.html,src/%.fmf,$@) ${fmfflags}
+
 out/%.html: src/%.fmf ${fmfcc} out/template.html
 	@printf "\e[1;32m%12s\e[0m %s\n" "generate" "$(patsubst out/%.html,%.fmf,$@)"
 	@mkdir -p out/
@@ -32,7 +37,7 @@ serve: dev
 	@printf "\e[1;32m%12s\e[0m %s\n" "serve" "http://localhost:8080"
 	@./serve.sh
 
-clean-template:
+clean-template: dev
 	@printf "\e[1;34m%12s\e[0m %s\n" "clean" "out/template.html"
 	@rm out/template.html
 clean:
