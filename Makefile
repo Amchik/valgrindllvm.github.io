@@ -23,7 +23,7 @@ static:
 	@mkdir -p out
 	@cp -r static/* out/.
 
-out/template.html: build-posts.py template.html
+out/template.html: ${fmfcc} build-posts.py template.html
 	@printf "\e[1;32m%12s\e[0m %s\n" "generate" "[template]"
 	@mkdir -p out/
 	@python3 ./build-posts.py
