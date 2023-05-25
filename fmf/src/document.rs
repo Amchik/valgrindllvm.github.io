@@ -56,6 +56,10 @@ impl<'a, E: FormatEngine> Display for Text<'a, E> {
             }
 
             match c {
+                '&' => f.write_str("&amp;")?,
+                '<' => f.write_str("&lt;")?,
+                '>' => f.write_str("&gt;")?,
+
                 _ if !escape => f.write_char(c)?,
 
                 '\\' if inline.link == 0 => {
