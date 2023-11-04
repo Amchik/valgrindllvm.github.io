@@ -103,9 +103,31 @@ img {
     font-size: 12px;
     color: #5f5d5d;
 }
-.sidebar .foot a {
+.sidebar .foot a, .sidebar-sponsored .foot a {
     text-decoration: dotted underline;
     color: inherit;
+}
+.sidebar-sponsored {
+    user-select: none;
+    margin-top: 10px;
+    margin-right: 17px;
+    border-radius: 17px;
+    background-color: #1e1c1c;
+    filter: grayscale(1);
+    transition: linear 0.1s filter;
+}
+.sidebar-sponsored:hover {
+    background-color: #282828;
+    filter: grayscale(0);
+}
+.sidebar-sponsored img {
+    border-radius: 17px;
+}
+.sidebar-sponsored .foot {
+    padding-bottom: 4px;
+    text-align: center;
+    font-size: 12px;
+    color: #5f5d5d;
 }
 
 .posts {
@@ -237,6 +259,9 @@ code {
         margin-bottom: 14px;
     }
     .sidebar .logo {
+        display: none;
+    }
+    .sidebar-sponsored {
         display: none;
     }
     header {

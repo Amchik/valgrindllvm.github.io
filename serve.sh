@@ -43,6 +43,10 @@ case "$path" in
         type="image/jpeg"
         cc="max-age=604800"
         ;;
+    *.png)
+        type="image/png"
+        cc="max-age=604800"
+        ;;
 	*.json)
 		type="application/json"
 		;;
